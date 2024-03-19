@@ -1,3 +1,0 @@
-Flask==3.0.0
-appengine-python-standard>=0.3.1
-Werkzeug==3.0.1

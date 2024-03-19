@@ -1,7 +1,0 @@
-# Generated from the `serving` package build.
-/*.egg-info/
-
-# Created by the notebooks.
-/data/
-/model/
-/predictions/
