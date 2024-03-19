@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-m10c@k!u5b!y@=n%!9dxmc4#=q)q$)tdu$6$&w#1p_y107=2c_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-APPENGINE_URL = env('rm2-poc.du.r.appspot.com', default=None)
+APPENGINE_URL = env('APPENGINE_URL', default=None)
 if APPENGINE_URL:
     # ensure a scheme is present in the URL before it's processed.
     if not urlparse(APPENGINE_URL).scheme:
