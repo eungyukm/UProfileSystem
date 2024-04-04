@@ -935,12 +935,12 @@ def profile_set_pass_call_donut_chart_data(request):
 # profile_record_delete
 def profile_record_delete(request):
     profile_record_info_id = request.GET['profile_record_info_id']
-    profile_record_info_query = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id)
-    profile_record_info_query.delete()
+    # profile_record_info_query = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id)
+    # profile_record_info_query.delete()
 
     message = f'''
         <script>
-            alert('삭제되었습니다')
+            alert('관리자만 삭제할 수 있습니다.')
             location.href = '/profile_record_table/'
         </script>
          '''
