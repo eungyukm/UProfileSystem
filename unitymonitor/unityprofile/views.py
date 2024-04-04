@@ -148,11 +148,8 @@ def profile_record_result(request):
 
     profile_record_model.save()
 
-    # 지정된 범위의 프로파일 데이터 가져오기
-    profile_data_list = ProfileData.objects.filter(profile_idx__gte=profile_record_start_idx, profile_idx__lte=profile_record_end_idx)
-
-    # 추가로 profile_data_list에서 profile_device_name에 해당하는 데이터만 필터링
-    profile_data_list = profile_data_list.filter(device_name=profile_device_name)
+    # 변수 명 profile_data_list으로 설정하고, ProfileData 테이블에서 device_name이 profile_device_name이고, profile_idx가 profile_record_start_idx와 profile_record_end_idx 사이에 있는 데이터를 가져옴
+    profile_data_list = ProfileData.objects.filter(device_name=profile_device_name, profile_idx__gte=profile_record_start_idx, profile_idx__lte=profile_record_end_idx)
     
     # 가져온 프로파일 데이터를 기록된 프로파일로 저장
     for profile_data in profile_data_list:
