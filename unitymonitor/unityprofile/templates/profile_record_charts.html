@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Profile Page</title>
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Custom styles for this template -->
+<link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        {% include 'left_menu.html'%}
+        
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                {% include 'top_menu.html' %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Charts</h1>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">FPS Chart</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="profileFPSChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">FPS Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="profileFPSDonutChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-center small"> Average FPS Information by Scene</h6>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Total Memory Chart</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="profileTotalMemoryChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Total Memory Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="profileTotalMemoryDountChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-center small"> Average Memory Information by Scene</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Tris Chart</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="profileTrisChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Tris Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="profileTrisDountChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-center small"> Average Tris Information by Scene</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Vertices Chart</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="profileVerticesChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Vertices Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="profileVerticesDonutChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-center small"> Average Vertices Information by Scene</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                                        <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Draw Call Chart</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="profileDrawCallChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Draw Call Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="profileDrawCallDonutChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-center small"> Average Draw Call Information by Scene</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">SetPass Call Chart</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="profileSetPassCallChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">SetPass Call Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="profileSetPassCallDonutChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-center small"> Average SetPass Call Information by Scene</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Texture Memory</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="profileTextureMemoryChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Texture Memory Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="profileTextureMemoryDountChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-center small"> Average Texture Memory Information by Scene</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Mesh Memory</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="profileMeshMemoryChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Mesh Memory Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="profileMeshMemoryConutChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <h6 class="text-center small"> Average Mesh Memory Information by Scene</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>                    
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            {% include 'bottom_info.html' %}
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+    <!-- Line Chart JavaScript -->
+    <script>
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_record_chart_FPS_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileFPSChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'FPS',
+                                data: data.fps_values,  // Y 축 데이터
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_record_chart_Memory_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileTotalMemoryChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Total Memory (GB)',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: 'rgba(99, 255, 132, 0.2)',
+                                // blue borderColor
+                                borderColor: 'rgba(99, 255, 132, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        // profileTrisChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_record_chart_Tris_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileTrisChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Tris',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: 'rgba(99, 132, 255, 0.2)',
+                                borderColor: 'rgba(99, 132, 255, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        // profileVerticesChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_record_chart_Vertices_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileVerticesChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Vertices',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: 'rgba(132, 255, 99, 0.2)',
+                                borderColor: 'rgba(132, 255, 99, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        // profileDrawCallChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_record_chart_DrawCall_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileDrawCallChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Draw Call',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+
+        // profileTextureMemoryChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_record_chart_TextureMemory_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileTextureMemoryChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Texture Memory (GB)',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: 'rgba(255, 132, 99, 0.2)',
+                                borderColor: 'rgba(255, 132, 99, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        // profileMeshMemoryChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_record_chart_MeshMemory_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileMeshMemoryChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Mesh Memory (GB)',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        // profileFPSDonutChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_fps_donut_chart_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileFPSDonutChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'FPS',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(32, 49, 64, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        // profileTotalMemoryDountChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_total_memory_donut_chart_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileTotalMemoryDountChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Total Memory (GB)',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(32, 49, 64, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                        
+                    });
+                }
+            });
+        });
+
+        // profileTrisDountChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_tris_donut_chart_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileTrisDountChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Tris',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(32, 49, 64, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                        
+                    });
+                }
+            });
+        });
+
+        // profileVerticesDonutChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_vertices_donut_chart_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileVerticesDonutChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Vertices',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(32, 49, 64, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                        
+                    });
+                }
+            });
+        });
+
+        // profileTextureMemoryDountChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_texture_memory_donut_chart_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileTextureMemoryDountChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Texture Memory (GB)',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(32, 49, 64, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                        
+                    });
+                }
+            });
+        });
+
+        // profileMeshMemoryConutChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_mesh_memory_donut_chart_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileMeshMemoryConutChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Mesh Memory (GB)',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(32, 49, 64, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                        
+                    });
+                }
+            });
+        });
+
+        // profileSetPassCallChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_record_chart_SetPassCall_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileSetPassCallChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'SetPass Call',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        // profileDrawCallDonutChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_draw_call_donut_chart_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileDrawCallDonutChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'Draw Call',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(32, 49, 64, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+        // profileSetPassCallDonutChart
+        $(document).ready(function() {
+            // 차트 데이터 가져오기
+            $.ajax({
+                url: '/profile_set_pass_call_donut_chart_data',  // 데이터를 가져올 URL
+                method: 'GET',  // GET 요청
+                data: {
+                    profile_record_info_id: '{{ profile_record_info_id }}'  // 프로필 레코드 정보 ID 전달
+                },
+                dataType: 'json',  // 응답 데이터 형식은 JSON
+                success: function(data) {  // 요청이 성공하면 실행될 함수
+                    // 차트를 생성하는 JavaScript 코드
+                    var ctx = document.getElementById('profileSetPassCallDonutChart').getContext('2d');
+                    var profileRecordChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: data.profile_scenes,  // X 축 레이블
+                            datasets: [{
+                                label: 'SetPass Call',
+                                data: data.avg_values,  // Y 축 데이터
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(32, 49, 64, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            },
+                            legend: {
+                                display: false
+                            },
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
+
+</html>
