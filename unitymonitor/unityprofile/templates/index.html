@@ -84,6 +84,7 @@
                                     <thead>
                                         <tr>
                                             <th>Profile Index</th>
+                                            <th>Device Name</th>
                                             <th>Scene Name</th>
                                             <th>FPS</th>
                                             <th>Total Memory</th>
@@ -95,6 +96,7 @@
                                         {% for r1 in content_list%}
                                         <tr>
                                             <td>{{r1.profile_idx}}</td>
+                                            <td>{{r1.device_name}}</td>
                                             <td>{{r1.scene_name}}</td>
                                             <td>{{r1.fps}}</td>
                                             <td>{{r1.total_memory}} GB</td>
