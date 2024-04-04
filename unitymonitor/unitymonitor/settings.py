@@ -83,8 +83,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'client_db', #DB명
         'USER' : 'root',
-        'PASSWORD' : 'client',
-        'HOST' : '34.47.77.182',
+        'PASSWORD' : '',
+        'HOST' : '',
         'PORT' : '3306',
     }
 }
@@ -125,6 +125,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# 정적 파일을 찾을 디렉토리 설정
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

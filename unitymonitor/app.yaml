@@ -16,9 +16,14 @@ runtime: python
 env: flex
 entrypoint: gunicorn -b :$PORT unitymonitor.wsgi
 
+runtime_config:
+  python_version: 3
+
 handlers:
+# Django 애플리케이션의 정적 파일 서빙을 위한 핸들러 설정
 - url: /static
   static_dir: static
 
-runtime_config:
-  python_version: 3
+# Django 애플리케이션을 위한 URL 핸들러 설정
+- url: .*
+  script: auto
