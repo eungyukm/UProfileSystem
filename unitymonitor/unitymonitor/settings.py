@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'unityprofile.apps.UnityprofileConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,12 @@ WSGI_APPLICATION = 'unitymonitor.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'client_db', #DB명
+        'USER' : 'root',
+        'PASSWORD' : 'client',
+        'HOST' : '34.64.87.85',
+        'PORT' : '3306',
     }
 }
 

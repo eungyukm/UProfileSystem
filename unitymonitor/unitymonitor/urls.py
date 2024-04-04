@@ -16,7 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('', include('unityprofile.urls')),
+    # 프로파일 관련
+    path('api/', include('api.urls')),
+
+    # GET Test
+    # path('', include('api.urls')),
+
+    # 프로파일 페이지
+    path('', include('unityprofile.urls'))
 ]
