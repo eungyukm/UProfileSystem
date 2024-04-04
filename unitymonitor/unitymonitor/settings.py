@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'unitymonitor.middleware.TopMenuMiddleware.TopMenuMiddleware',
+    'unitymonitor.middleware.LeftMenuMiddleware.LeftMenuMiddleware',
 ]
 
 ROOT_URLCONF = 'unitymonitor.urls'
