@@ -131,6 +131,7 @@ def profile_record_write(request):
 def profile_record_result(request):
     # POST 요청으로 받은 데이터 profile record에 저장
     profile_record_title = request.POST['profile_record_title']
+    profile_device_name = request.POST['profile_device_name']
     profile_record_contents = request.POST['profile_record_contents']
     profile_record_start_idx = request.POST['profile_record_start_idx']
     profile_record_end_idx = request.POST['profile_record_end_idx']
@@ -149,6 +150,9 @@ def profile_record_result(request):
 
     # 지정된 범위의 프로파일 데이터 가져오기
     profile_data_list = ProfileData.objects.filter(profile_idx__gte=profile_record_start_idx, profile_idx__lte=profile_record_end_idx)
+
+    # 추가로 profile_data_list에서 profile_device_name에 해당하는 데이터만 필터링
+    profile_data_list = profile_data_list.filter(device_name=profile_device_name)
     
     # 가져온 프로파일 데이터를 기록된 프로파일로 저장
     for profile_data in profile_data_list:
