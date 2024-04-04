@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'client_db', #DB명
         'USER' : 'root',
         'PASSWORD' : 'client',
-        'HOST' : '34.64.87.85',
+        'HOST' : '34.47.77.182',
         'PORT' : '3306',
     }
 }
