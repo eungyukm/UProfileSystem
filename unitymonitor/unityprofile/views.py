@@ -185,8 +185,8 @@ def profile_record_result(request):
 
 # profile_record_table
 def profile_record_table(request):
-    profile_record_info_query = ProfileRecordInfo.objects.order_by('-profile_record_info_idx')[:10]
-    profile_record_list = ProfileRecord.objects.order_by('-profile_record_idx')[:10]
+    profile_record_info_query = ProfileRecordInfo.objects.order_by('-profile_record_info_idx')
+    profile_record_list = ProfileRecord.objects.order_by('-profile_record_idx')
     
     content_list =[]
     for q1 in profile_record_list:
