@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'unityprofile.apps.UnityprofileConfig',
     'rest_framework',
+    'user_app',
 ]
 
 MIDDLEWARE = [
