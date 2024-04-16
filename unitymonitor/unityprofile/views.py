@@ -214,6 +214,8 @@ def profile_record_table(request):
 def profile_record_read(request):
     profile_record_info_id = request.GET['profile_record_info_id']
     profile_record_info_query = ProfileRecordInfo.objects.order_by('-profile_record_info_idx')
+    profile_record_title = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id).profile_record_title
+    profile_record_contents = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id).profile_record_contents
 
     # ProfileRecord 테이블에서 profile_record_info_id에 해당하는 데이터를 가져옵니다.
     profile_record_list = ProfileRecord.objects.filter(profile_record_info=profile_record_info_id).order_by('-profile_record_idx')
@@ -248,12 +250,84 @@ def profile_record_read(request):
         'profile_record_info_list': profile_record_info_list,
         'content_list': content_list,
         'profile_record_info_id': profile_record_info_id,
+        'profile_record_title': profile_record_title,
+        'profile_record_contents': profile_record_contents,
     }
 
     print(profile_record_info_list)
 
     template = loader.get_template('profile_record_read.html')
     return HttpResponse(template.render(render_data, request))
+
+# profile_record_update
+def profile_record_update(request):
+    profile_record_info_id = request.GET['profile_record_info_id']
+    profile_record_info_query = ProfileRecordInfo.objects.order_by('-profile_record_info_idx')
+
+    # ProfileRecord 테이블에서 profile_record_info_id에 해당하는 데이터를 가져옵니다.
+    profile_record_list = ProfileRecord.objects.filter(profile_record_info=profile_record_info_id).order_by('-profile_record_idx')
+    profile_record_title = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id).profile_record_title
+    profile_record_contents = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id).profile_record_contents
+    
+    content_list =[]
+    for q1 in profile_record_list:
+        content_list.append(q1)
+
+    # content_list에 FPS 소수점 둘째 자리까지만 표시
+    for content in content_list:
+        content.fps = round(content.fps, 2)
+        content.min_fps = round(content.min_fps, 2)
+        content.avg_fps = round(content.avg_fps, 2)
+        content.max_fps = round(content.max_fps, 2)
+
+    # Total Memory GB로 표현 후 소수 셋째 짜리까지만 표시
+    for content in content_list:
+        content.total_memory = content.total_memory / (1024 * 1024 * 1024)
+        content.total_memory = round(content.total_memory, 3)
+
+    # Tris와 Vertex 정수 표현
+    for content in content_list:
+        content.tris = int(content.tris)
+        content.vertices = int(content.vertices)
+
+    profile_record_info_list =[]
+    for q1 in profile_record_info_query:
+        profile_record_info_list.append(q1)
+
+    render_data = {
+        'device' : 'GalaxyS10',
+        'profile_record_info_list': profile_record_info_list,
+        'content_list': content_list,
+        'profile_record_info_id': profile_record_info_id,
+        'profile_record_title': profile_record_title,
+        'profile_record_contents': profile_record_contents,
+    }
+
+    template = loader.get_template('profile_record_update.html')
+    return HttpResponse(template.render(render_data, request))
+
+# profile_record_update_result
+def profile_record_update_result(request):
+    # POST 요청으로 받은 데이터 profile record에 저장
+    profile_record_info_id = request.POST['profile_record_info_id']
+    profile_record_title = request.POST['profile_record_title']
+    profile_record_contents = request.POST['profile_record_contents']
+    current_date_time = datetime.now()
+
+    # ProfileRecord 테이블에서 profile_record_info_id에 해당하는 데이터를 가져옵니다.
+    profile_record_info = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id)
+    profile_record_info.profile_record_title = profile_record_title
+    profile_record_info.profile_record_contents = profile_record_contents
+    profile_record_info.date = current_date_time
+    profile_record_info.save()
+
+    message = f'''
+            <script>
+                alert('수정되었습니다')
+                location.href = '/profile_record_table'
+            </script>
+            '''
+    return HttpResponse(message)
 
 
 # live_profile_remove

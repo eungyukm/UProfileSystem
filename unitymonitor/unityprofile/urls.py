@@ -19,8 +19,13 @@ urlpatterns = [
     path('profile_record_result/', views.profile_record_result, name='profile record result'),
     path('profile_record_table/', views.profile_record_table, name='profile record table'),
 
+    # profile record CRUD =================================================================================================
     # profile record read
     path('profile_record_read/', views.profile_record_read, name='profile record read'),
+    # profile_record_update
+    path('profile_record_update/', views.profile_record_update, name='profile record update'),
+    # profile_record_update_result
+    path('profile_record_update_result/', views.profile_record_update_result, name='profile record update result'),
     # profile_record_delete
     path('profile_record_delete/', views.profile_record_delete, name='profile record delete'),
 
