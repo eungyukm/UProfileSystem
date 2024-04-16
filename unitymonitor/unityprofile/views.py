@@ -347,6 +347,9 @@ def profile_record_chart(request):
     profile_record_info_id = request.GET.get('profile_record_info_id')
     profile_record_list = ProfileRecord.objects.filter(profile_record_info_id=profile_record_info_id).order_by('profile_count')
 
+    profile_record_title = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id).profile_record_title
+    profile_record_contents = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id).profile_record_contents
+
     # 차트에 사용할 데이터 리스트 초기화
     profile_counts = []
     fps_values = []
@@ -361,6 +364,8 @@ def profile_record_chart(request):
         'profile_record_info_id': profile_record_info_id,
         'profile_counts': profile_counts,
         'fps_values': fps_values,
+        'profile_record_title': profile_record_title,
+        'profile_record_contents': profile_record_contents,
     }
 
     template = loader.get_template('profile_record_charts.html')
