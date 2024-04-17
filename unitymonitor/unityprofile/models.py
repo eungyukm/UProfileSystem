@@ -61,3 +61,30 @@ class ProfileRecord(models.Model):
     mesh_memory = models.FloatField(default=0.0)
 
     profile_record_info = models.ForeignKey(ProfileRecordInfo, on_delete=models.CASCADE, related_name='record_infos')
+
+class ProfileLiveData(models.Model):
+    profile_live_data_id = models.AutoField(primary_key=True)
+    profile_count = models.IntegerField(default="-1")
+    device_name = models.CharField(max_length=100, default="none")
+    project_name = models.CharField(max_length=100, default="none")
+    scene_name = models.CharField(max_length=100, default="none")
+    # date는 datetime으로 변경
+    date = models.DateTimeField(auto_now_add=True)
+    
+    fps = models.FloatField(default=0.0)
+    min_fps = models.FloatField(default=0.0)
+    avg_fps = models.FloatField(default=0.0)
+    max_fps = models.FloatField(default=0.0)
+    set_pass_call = models.FloatField(default=0.0)
+    draw_call = models.FloatField(default=0.0)
+    tris = models.FloatField(default=0.0)
+    vertices = models.FloatField(default=0.0)
+
+    total_memory = models.FloatField(default=0.0)
+    system_memory = models.FloatField(default=0.0)
+    texture_memory = models.FloatField(default=0.0)
+    mesh_memory = models.FloatField(default=0.0)
+
+    user_nickname = models.CharField(max_length=100, default="none")
+    build_version = models.CharField(max_length=100, default="none")
+    system_os = models.CharField(max_length=100, default="none")
