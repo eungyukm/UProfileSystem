@@ -28,5 +28,8 @@ urlpatterns = [
     # path('', include('api.urls')),
 
     # 프로파일 페이지
-    path('', include('unityprofile.urls'))
+    path('', include('unityprofile.urls')),
+
+    # 유저 페이지
+    path('user/', include('user_app.urls')),
 ]
