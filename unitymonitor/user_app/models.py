@@ -9,3 +9,10 @@ class UserTable(models.Model):
     user_email = models.CharField(max_length=100, unique=True)
     user_pw = models.CharField(max_length=100)
     user_permission = models.IntegerField(default=0)
+
+class UserData(models.Model):
+    user_id = models.AutoField(primary_key=True)
+    user_name = models.CharField(max_length=50)
+    user_email = models.CharField(max_length=100, unique=True)
+    user_pw = models.CharField(max_length=100)
+    user_permission = models.IntegerField(default=0)
