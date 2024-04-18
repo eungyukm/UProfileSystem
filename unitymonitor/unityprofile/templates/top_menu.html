@@ -12,30 +12,22 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Nav Item - User Information -->
+                        {% if request.session.login_chk == True%}
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link" href="/user/join">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Join</span>
+                            <a class="nav-link" href="/user/logout">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>
                                 <i class="fas fa-fw fa-user-tie" style="font-size: 30px;"></i>
                             </a>
                         </li>
-
+                        {% else %}
+                        <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link" href="/user/login">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Login</span>
-                                <i class="fas fa-fw fa-user" style="font-size: 30px;"></i>
+                                <i class="fas fa-fw fa-user-tie" style="font-size: 30px;"></i>
                             </a>
                         </li>
-
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link" href="/user/join">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logou</span>
-                                <i class="fas fa-fw fa-user" style="font-size: 30px;"></i>
-                            </a>
-                        </li>
+                        {% endif %}
                     </ul>
-
-
-
                 </nav>
                 <!-- End of Topbar -->
