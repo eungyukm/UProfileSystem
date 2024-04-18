@@ -35,6 +35,7 @@ class ProfileRecordInfo(models.Model):
     profile_record_title = models.CharField(max_length=100, default="none")
     profile_record_contents = models.CharField(max_length=500, default="none")
     date = models.CharField(max_length=500)
+    user_name = models.CharField(max_length=100, default="none")
     profile_record_start_idx = models.IntegerField(default="-1")
     profile_record_end_idx = models.IntegerField(default="-1")
 
