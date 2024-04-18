@@ -68,6 +68,7 @@ def login_result(request):
             request.session['login_chk'] = True
             request.session['login_user_email'] = user.user_email
             request.session['login_user_name'] = user.user_name
+            request.session['login_user_permission'] = user.user_permission
             confirm = '''
                         <script>
                             alert('로그인이 완료되었습니다')

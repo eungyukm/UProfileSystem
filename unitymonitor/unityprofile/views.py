@@ -1025,9 +1025,20 @@ def profile_set_pass_call_donut_chart_data(request):
 
 # profile_record_delete
 def profile_record_delete(request):
+    # 세션에서 사용자의 정보를 가져와 login_user_permission 3이상인 경우에만 삭제 가능
+    login_user_permission = request.session['login_user_permission']
     profile_record_info_id = request.GET['profile_record_info_id']
-    # profile_record_info_query = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id)
-    # profile_record_info_query.delete()
+
+    if login_user_permission >= 3:
+        profile_record_info_query = ProfileRecordInfo.objects.get(profile_record_info_idx=profile_record_info_id)
+        profile_record_info_query.delete()
+        message = f'''
+        <script>
+            alert('삭제 되었습니다.')
+            location.href = '/profile_record_table/'
+        </script>
+         '''
+        return HttpResponse(message)
 
     message = f'''
         <script>
