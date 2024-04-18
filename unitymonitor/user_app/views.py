@@ -67,6 +67,7 @@ def login_result(request):
             # 로그인에 성공할 경우 세션에 로그인 정보를 저장합니다.
             request.session['login_chk'] = True
             request.session['login_user_email'] = user.user_email
+            request.session['login_user_name'] = user.user_name
             confirm = '''
                         <script>
                             alert('로그인이 완료되었습니다')

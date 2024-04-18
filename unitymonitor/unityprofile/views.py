@@ -138,12 +138,23 @@ def profile_record_result(request):
 
     current_date_time = datetime.now()
 
+    # 로그인 했는지 체크
+    if 'login_user_name' not in request.session:
+        message = f'''
+        <script>
+            alert('로그인이 필요합니다')
+            location.href = '/profile_record_write'
+        </script>
+        '''
+        return HttpResponse(message)
+
     profile_record_model = ProfileRecordInfo(
         profile_record_title=profile_record_title,
         profile_record_contents=profile_record_contents,
         profile_record_start_idx=profile_record_start_idx,
         date = current_date_time,
-        profile_record_end_idx=profile_record_end_idx
+        profile_record_end_idx=profile_record_end_idx,
+        user_name=request.session['login_user_name']
     )    
 
     profile_record_model.save()
