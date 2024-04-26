@@ -186,6 +186,9 @@ def profile_record_result(request):
         )
         profile_record.save()
 
+    # ProfileData에서 profile_data_list에 저장된 데이터 제거
+    profile_data_list.delete()
+
     message = f'''
             <script>
                 alert('저장되었습니다')
