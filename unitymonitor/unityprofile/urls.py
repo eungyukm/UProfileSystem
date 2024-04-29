@@ -5,7 +5,7 @@ urlpatterns = [
     # path('', views.index, name='indxe')
     # path('', views.main_page, name='main page'),
 
-    path('', views.profile_page, name='profile page'),
+    path('', views.profile_record_table, name='profile page'),
     path('profile/', views.profile_page, name='profile page'),
     path('galaxy_s10_profiledata/', views.galaxy_s10_profiledata, name='galaxy s10 profile data'),
 
