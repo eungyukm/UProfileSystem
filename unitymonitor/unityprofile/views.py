@@ -200,11 +200,6 @@ def profile_record_result(request):
 # profile_record_table
 def profile_record_table(request):
     profile_record_info_query = ProfileRecordInfo.objects.order_by('-profile_record_info_idx')
-    profile_record_list = ProfileRecord.objects.order_by('-profile_record_idx')
-    
-    content_list =[]
-    for q1 in profile_record_list:
-        content_list.append(q1)
         
     profile_record_info_list =[]
     for q1 in profile_record_info_query:
@@ -217,7 +212,6 @@ def profile_record_table(request):
     render_data = {
         'device' : 'GalaxyS10',
         'profile_record_info_list': profile_record_info_list,
-        'content_list': content_list,
     }
 
     template = loader.get_template('profile_record_table.html')
