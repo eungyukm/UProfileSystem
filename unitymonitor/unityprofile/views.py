@@ -30,7 +30,7 @@ def index(request):
 # profileData를 출력
 def profile_page(request):
     device_info_query = DeviceInfo.objects.order_by('-device_idx')[:10]
-    profile_data_list = ProfileData.objects.order_by('-profile_idx')[:1000]
+    profile_data_list = ProfileData.objects.order_by('-profile_idx')[:500]
     
     content_list =[]
     for q1 in profile_data_list:
