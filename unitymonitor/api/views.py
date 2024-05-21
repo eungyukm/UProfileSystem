@@ -18,8 +18,6 @@ def getData(request):
 def api_profile_result(request):
     # 사용자가 입력한 파라미터를 추출합니다.
     body = json.loads(request.body)
-    # print(body)
-    # print(request.data)
     device_name = body['device_name']
     profile_count = body['profile_count']
     scene_name = body['scene_name']
@@ -39,11 +37,23 @@ def api_profile_result(request):
     mesh_memory = body['mesh_memory']
     # date = body['date']
 
-    user_nickname = body['user_nickname']
-    build_version = body['build_version']
-    system_os = body['system_os']
+    if 'user_nickname' not in body:
+        user_nickname = 'none'
+    else:
+        user_nickname = body['user_nickname']
 
-    print(fps)
+    if 'build_version' not in body:
+        build_version = 'none'
+    else:
+        build_version = body['build_version']
+
+    if 'system_os' not in body:
+        system_os = 'none'
+
+    else:
+        system_os = body['system_os']
+
+    # print(fps)
     # print(min_fps)
 
     profile_data = unityprofile.models.ProfileData()
