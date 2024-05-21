@@ -27,26 +27,13 @@
                     <span>Profile Record Tables</span></a>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <!--
+            <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Device Profile</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Devices</h6>
-
-                        {% for device_info in device_info_list %}
-                        <a class="collapse-item" href="/{{device_info.device_name}}_profiledata">{{ device_info.device_name }}</a>
-                        {% comment %} <a class="collapse-item" href="buttons.html">{{ device_info.device_name }} - {{ device_info.device_profile_name }}</a> {% endcomment %}
-                        {% endfor %}
-                    </div>
-                </div>
+                <a class="nav-link" href="/profile_record_table">
+                    <i class="fas fa-fw fa-mobile-alt"></i>
+                    <span>Device Registration Tables</span></a>
             </li>
-            -->
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

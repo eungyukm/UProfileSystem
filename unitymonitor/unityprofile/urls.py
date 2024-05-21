@@ -78,4 +78,13 @@ urlpatterns = [
 
     # profile_set_pass_call_donut_chart_data uri
     path('profile_set_pass_call_donut_chart_data/', views.profile_set_pass_call_donut_chart_data, name='profile set pass call donut chart data'),
+
+    # device_registration_table
+    path('device_registration_table/', views.device_registration_table, name='device registration table'),
+
+    # device_registration_write
+    path('device_registration_write/', views.device_registration_write, name='device registration write'),
+
+    # device_registration_result
+    path('device_registration_result/', views.device_registration_result, name='device registration result'),
 ]

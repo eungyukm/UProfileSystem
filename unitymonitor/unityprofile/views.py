@@ -1049,3 +1049,41 @@ def print_device_names(device_info_list):
     # 각 디바이스의 이름을 출력합니다.
     for device_info in device_info_list:
         print(device_info.device_name)
+
+
+# device_registration_table
+def device_registration_table(request):
+    device_info_query = DeviceInfo.objects.all()
+    device_info_list = []
+    for q1 in device_info_query:
+        device_info_list.append(q1)
+
+    render_data = {
+        'device_info_list': device_info_list,
+    }
+
+    template = loader.get_template('device_registration_table.html')
+    return HttpResponse(template.render(render_data, request))
+
+# device_registration_write
+def device_registration_write(request):
+
+    template = loader.get_template('device_registration_form.html')
+    return HttpResponse(template.render({}, request))
+
+# device_registration_result
+def device_registration_result(request):
+    device_name = request.POST['registration_device_name']
+    device_profile_name = request.POST['registration_profile_name']
+    device_info = DeviceInfo()
+    device_info.device_name = device_name
+    device_info.device_profile_name = device_profile_name
+    device_info.save()
+
+    message = f'''
+        <script>
+            alert('등록되었습니다')
+            location.href = '/device_registration_table'
+        </script>
+         '''
+    return HttpResponse(message)
