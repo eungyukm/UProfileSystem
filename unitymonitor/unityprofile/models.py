@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class DeviceInfo(models.Model):
@@ -78,7 +79,7 @@ class ProfileLiveData(models.Model):
     project_name = models.CharField(max_length=100, default="none")
     scene_name = models.CharField(max_length=100, default="none")
     # date는 datetime으로 변경
-    date = models.DateTimeField(auto_now_add=True)
+    date_time = models.DateTimeField(auto_now_add=True)
     
     fps = models.FloatField(default=0.0)
     min_fps = models.FloatField(default=0.0)
