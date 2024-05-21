@@ -37,9 +37,13 @@ def api_profile_result(request):
     system_memory = body['system_memory']
     texture_memory = body['texture_memory']
     mesh_memory = body['mesh_memory']
-    date = body['date']
+    # date = body['date']
 
-    # print(fps)
+    user_nickname = body['user_nickname']
+    build_version = body['build_version']
+    system_os = body['system_os']
+
+    print(fps)
     # print(min_fps)
 
     profile_data = unityprofile.models.ProfileData()
@@ -47,7 +51,6 @@ def api_profile_result(request):
     profile_data.profile_count = profile_count
     profile_data.scene_name = scene_name
     profile_data.project_name = project_name
-    profile_data.date = date
 
     profile_data.fps = fps
     profile_data.min_fps = min_fps
@@ -64,7 +67,9 @@ def api_profile_result(request):
     profile_data.texture_memory = texture_memory
     profile_data.mesh_memory = mesh_memory
 
-    
+    profile_data.user_nickname = user_nickname
+    profile_data.build_version = build_version
+    profile_data.system_os = system_os
 
     profile_data.save()
 
