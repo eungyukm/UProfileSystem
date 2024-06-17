@@ -166,7 +166,7 @@ def profile_record_result(request):
             device_name=profile_data.device_name,
             project_name=profile_data.project_name,
             scene_name=profile_data.scene_name,
-            date=profile_data.date,
+            date_time=profile_data.date_time,
             fps=profile_data.fps,
             min_fps=profile_data.min_fps,
             avg_fps=profile_data.avg_fps,
@@ -204,7 +204,7 @@ def profile_record_table(request):
 
     # date 소수점 표현하지 않음
     for content in profile_record_info_list:
-        content.date = content.date.split('.')[0]
+        content.date = content.date_time.strftime('%Y-%m-%d %H:%M:%S')
 
     render_data = {
         'device' : 'GalaxyS10',
