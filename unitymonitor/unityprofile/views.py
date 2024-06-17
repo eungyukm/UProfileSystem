@@ -136,8 +136,6 @@ def profile_record_result(request):
     profile_record_start_idx = request.POST['profile_record_start_idx']
     profile_record_end_idx = request.POST['profile_record_end_idx']
 
-    current_date_time = datetime.now()
-
     # 로그인 했는지 체크
     if 'login_user_name' not in request.session:
         message = f'''
@@ -152,7 +150,6 @@ def profile_record_result(request):
         profile_record_title=profile_record_title,
         profile_record_contents=profile_record_contents,
         profile_record_start_idx=profile_record_start_idx,
-        date = current_date_time,
         profile_record_end_idx=profile_record_end_idx,
         user_name=request.session['login_user_name']
     )    
